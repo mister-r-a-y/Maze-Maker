@@ -1,61 +1,66 @@
-import { Component, ChangeEvent } from 'react'
+import { ChangeEvent, useState } from 'react'
 import MazeControl from './MazeControl'
 
-interface MazeConfigState {
-  type: string,
-  width: number,
-  height: number
+export default function MazeConfig() {
+  const [type, ] = useState('grid')
+  const [width, setWidth] = useState('30')
+  const [height, setHeight] = useState('20')
+  const [seed, setSeed] = useState(0)
+  console.log('seed', seed)
+
+function handleWidth(e: ChangeEvent<HTMLInputElement>) {
+  setWidth(e.target.value)
 }
 
-export default class MazeConfig extends Component<{},MazeConfigState> {
-  constructor(props: {}) {
-    super(props)
-    
-    this.state = {
-      type: 'grid',
-      width:  30,
-      height: 20
-    }
-    
-    this.onWidth = this.onWidth.bind(this)
-    this.onHeight = this.onHeight.bind(this)
-    this.onRedraw = this.onRedraw.bind(this)
-  }
-  
-  onWidth(e: ChangeEvent<HTMLInputElement>) {
-    const number = Number(e.target.value)
-    this.setState({ width: number })
-  
-  }
-  
-  onHeight(e: ChangeEvent<HTMLInputElement>) {
-    const number = Number(e.target.value)
-    this.setState({ height: number })
-  }
+function handleHeight(e: ChangeEvent<HTMLInputElement>) {
+  setHeight(e.target.value)
+}
 
-  onRedraw() {
-    this.setState({ width: this.state.width, height: this.state.height })
+function handleRedraw() {
+  function changeSeed(seed: number) {
+    const newSeed = seed + 1
+    return newSeed
   }
-  
-  render() {
-    const showControl = this.state.height > 0 && this.state.width > 0
-    const controlView = showControl && <MazeControl width={ this.state.width } height={ this.state.height } type={ this.state.type } />
+  setSeed(changeSeed)
+}
+  const heightNumber = Number(height)
+  const widthNumber = Number(width)
+    const showControl = heightNumber > 0 && widthNumber > 0
+    const controlView = showControl && (
+      <MazeControl 
+        width={widthNumber} 
+        height={heightNumber} 
+        type={type} 
+      />
+    )
 
     return (
       <div className='maze-controller'>
         <form>
           <div className='size-inputs'>
-            <label htmlFor="height">Height:</label>
-            <input type="text" placeholder="2-100" id="height" value={ this.state.height } onChange={ this.onHeight } />
             <label htmlFor="width">Width:</label>
-            <input type="text" placeholder='2-100' id="width" value={ this.state.width } onChange={ this.onWidth } />
+            <input 
+              type="text" 
+              placeholder='2-100' 
+              id="width" 
+              value={width} 
+              onChange={handleWidth} 
+            />
+            <label htmlFor="height">Height:</label>
+            <input 
+              type="text" 
+              placeholder="2-100" 
+              id="height" 
+              value={height} 
+              onChange={handleHeight} 
+            />
           </div>
         </form>
         {controlView}
         <div className="button-container">
-          <input className="button button-outline" type="button" value="Redraw" onClick={ this.onRedraw } />
+          <input className="button button-outline" type="button" value="Redraw" onClick={handleRedraw} />
         </div>
       </div>
     )
-  }
+
 }
