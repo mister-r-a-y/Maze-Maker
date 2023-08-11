@@ -5,6 +5,7 @@ export default function MazeConfig() {
   const [type, ] = useState('grid')
   const [width, setWidth] = useState('30')
   const [height, setHeight] = useState('20')
+  // to allow consistent reload with setState functions
   const [seed, setSeed] = useState(0)
   console.log('seed', seed)
 
@@ -23,9 +24,9 @@ function handleRedraw() {
   }
   setSeed(changeSeed)
 }
-  const heightNumber = Number(height)
   const widthNumber = Number(width)
-    const showControl = heightNumber > 0 && widthNumber > 0
+  const heightNumber = Number(height)
+    const showControl = widthNumber > 0 && heightNumber > 0
     const controlView = showControl && (
       <MazeControl 
         width={widthNumber} 
