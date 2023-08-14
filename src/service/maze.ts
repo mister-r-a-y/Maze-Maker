@@ -51,15 +51,15 @@ function carve(grid: number[][], x: number, y: number) {
   directions.forEach(function (direction) {
     if (direction === 0 && y - 1 >= 0 && grid[y - 1][x] === 0) {
       // Top.
-      path(grid,x, y, x, y - 1, DIRECTION.TOP);
+      path(grid, x, y, x, y - 1, DIRECTION.TOP);
     }
     else if (direction === 1 && x + 1 < grid[0].length && grid[y][x + 1] === 0) {
       // Right.
-      path(grid,x, y, x + 1, y, DIRECTION.RIGHT);
+      path(grid, x, y, x + 1, y, DIRECTION.RIGHT);
     }
     else if (direction === 2 && y + 1 < grid.length && grid[y + 1][x] === 0) {
       // Bottom.
-      path(grid,x, y, x, y + 1, DIRECTION.BOTTOM);
+      path(grid, x, y, x, y + 1, DIRECTION.BOTTOM);
     }
     else if (direction === 3 && x - 1 >= 0 && grid[y][x - 1] === 0) {
       // Left.
@@ -79,6 +79,56 @@ export function initialize(width: number, height: number) {
     }
   }
 
-  carve(grid,0, 0);
-  return grid
+  carve(grid, 0, 0);
+
+  const gridNumbers = [];
+
+  // Top border.
+  for (let i = 0; i <= grid[0].length * 2; i++) {
+    gridNumbers.push(1)
+  }
+
+  gridNumbers.push(0)
+
+  // Main grid
+  for (let y = 0; y < grid.length; y++) {
+    const passageRow = [];
+
+    // Left border column
+    gridNumbers.push(1)
+    passageRow.push(1)
+    // Rooms
+    for (let x = 0; x < grid[0].length; x++) {
+      // Add a cell to room
+      gridNumbers.push(2)
+
+      if ((grid[y][x] & DIRECTION.BOTTOM) === DIRECTION.BOTTOM) {
+        // Open passage to the south
+        passageRow.push(2)
+      }
+      else {
+        // Close passage to the south
+        passageRow.push(1)
+      }
+
+      // Add closed passage to next row between rooms.
+      passageRow.push(1)
+
+      if ((grid[y][x] & DIRECTION.RIGHT) === DIRECTION.RIGHT) {
+        // Open passage to the east.
+        gridNumbers.push(2)
+      }
+      else {
+        // Close passage to the east.
+        gridNumbers.push(1)
+      }
+    }
+
+    gridNumbers.push(0)
+    passageRow.push(0)
+
+    // Append passages row to elements
+    gridNumbers.push(...passageRow);
+  }
+  return gridNumbers
 }
