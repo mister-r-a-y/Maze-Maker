@@ -8,7 +8,7 @@ interface MazeManagerType {
 }
 
 
-export var MazeManager: MazeManagerType = {
+const MazeManager: MazeManagerType = {
   grid: [],
   
   DIRECTION: {
@@ -22,8 +22,8 @@ export var MazeManager: MazeManagerType = {
     MazeManager.grid = [];
     
     // set cells to 0.
-    for (var y=0; y<height; y++) {
-      for (var x=0; x<width; x++) {
+    for (let y=0; y<height; y++) {
+      for (let x=0; x<width; x++) {
         MazeManager.grid[y] = MazeManager.grid[y] || [];
         MazeManager.grid[y][x] = 0;
       }
@@ -33,7 +33,7 @@ export var MazeManager: MazeManagerType = {
   },
 
   opposite: function(direction: number) {
-    var result = 0;
+    let result = 0;
     
     switch(direction) {
      case MazeManager.DIRECTION.TOP: result = MazeManager.DIRECTION.BOTTOM; break;
@@ -60,7 +60,13 @@ export var MazeManager: MazeManagerType = {
       return;
     }
     // First, try each direction (in random order)
-    var directions = [0, 1, 2, 3].sort(() => Math.random() * 2 - 1);
+    var directions = [0, 1, 2, 3];
+    
+    // Fisher-Yates shuffle for directions array
+    for (let i = directions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [directions[i], directions[j]] = [directions[j], directions[i]];
+    }
 
     directions.forEach(function(direction) {
       if (direction === 0 && y-1 >= 0 && MazeManager.grid[y-1][x] === 0) {
@@ -80,5 +86,8 @@ export var MazeManager: MazeManagerType = {
         MazeManager.path(x, y, x - 1, y, MazeManager.DIRECTION.LEFT);
       }
     });
-  },
-};
+    }
+}
+
+
+export default MazeManager;
