@@ -1,4 +1,4 @@
-import MazeManager from './MazeManager'
+import { initialize, DIRECTION } from '../service/maze'
 
 interface MazeControlProps {
   width: number
@@ -7,19 +7,19 @@ interface MazeControlProps {
 
 export default function MazeControl(props: MazeControlProps) {
 
-  MazeManager.initialize(props.width, props.height)
+  const grid = initialize(props.width, props.height)
 
   const elements = [];
 
   // Top border.
-  for (let i = 0; i <= MazeManager.grid[0].length * 2; i++) {
+  for (let i = 0; i <= grid[0].length * 2; i++) {
     elements.push(<div className='cell closed'></div>);
   }
 
   elements.push(<div className='clear'></div>);
 
   // Main grid
-  for (let y = 0; y < MazeManager.grid.length; y++) {
+  for (let y = 0; y < grid.length; y++) {
     const passageRow = [];
 
     // Left border column
@@ -27,11 +27,11 @@ export default function MazeControl(props: MazeControlProps) {
     passageRow.push(<div className='cell closed'></div>);
 
     // Rooms
-    for (let x = 0; x < MazeManager.grid[0].length; x++) {
+    for (let x = 0; x < grid[0].length; x++) {
       // Add a cell to room
       elements.push(<div className='cell open'></div>);
 
-      if ((MazeManager.grid[y][x] & MazeManager.DIRECTION.BOTTOM) === MazeManager.DIRECTION.BOTTOM) {
+      if ((grid[y][x] & DIRECTION.BOTTOM) === DIRECTION.BOTTOM) {
         // Open passage to the south
         passageRow.push(<div className='cell open'></div>);
       }
@@ -43,7 +43,7 @@ export default function MazeControl(props: MazeControlProps) {
       // Add closed passage to next row between rooms.
       passageRow.push(<div className='cell closed'></div>);
 
-      if ((MazeManager.grid[y][x] & MazeManager.DIRECTION.RIGHT) === MazeManager.DIRECTION.RIGHT) {
+      if ((grid[y][x] & DIRECTION.RIGHT) === DIRECTION.RIGHT) {
         // Open passage to the east.
         elements.push(<div className='cell open'></div>);
       }
