@@ -7,6 +7,7 @@ export default function MazeConfig() {
   // allows consistent reload with the setState functions
   const [seed, setSeed] = useState(0)
 
+
   function handleWidth(e: ChangeEvent<HTMLInputElement>) {
     setWidth(e.target.value)
   }
@@ -34,7 +35,12 @@ export default function MazeConfig() {
   )
 
   return (
-    <div className='maze-container'>
+    <div className='container'>
+      <div className='header'>
+        <div className='header-effect'>
+          <div className='header-effect-text'>Create a Maze</div>
+        </div>
+      </div>
       <form>
         <div className='size-inputs'>
           <label htmlFor="width">Width:</label>
@@ -58,7 +64,11 @@ export default function MazeConfig() {
       {/* make sure zeros don't break the maze render and call <MazeControl /> */}
       {controlView}
       <div className="button-container">
-        <input className="button button-outline" type="button" value="Redraw" onClick={handleRedraw} />
+        <input
+          className="button button-outline"
+          type="button"
+          value="Redraw"
+          onClick={handleRedraw} />
       </div>
     </div>
   )
