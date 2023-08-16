@@ -42,7 +42,6 @@ function carve(grid: number[][], x: number, y: number) {
   // First, try each direction (in random order)
   var directions = [0, 1, 2, 3];
 
-  // Fisher-Yates shuffle for directions array
   for (let i = directions.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [directions[i], directions[j]] = [directions[j], directions[i]];
