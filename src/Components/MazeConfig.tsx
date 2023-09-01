@@ -1,9 +1,11 @@
 import { ChangeEvent, useState } from 'react'
 import MazeControl from './MazeControl'
 
+import '../styles/Controls.css'
+
 export default function MazeConfig() {
   const [width, setWidth] = useState('30')
-  const [height, setHeight] = useState('20')
+  const [height, setHeight] = useState('10')
   // allows consistent reload with the setState functions
   const [seed, setSeed] = useState(0)
 

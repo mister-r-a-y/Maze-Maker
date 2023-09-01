@@ -3,7 +3,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: white;
-  height: 100vh;
+  height: fit-content;
 }
 
 @keyframes background-pan {
@@ -22,33 +22,23 @@ body {
   justify-content: center;
   font-size: clamp(3em, 2vw, 4em);
   margin: 0px;
-  cursor: alias;
-  padding-top: 200px;
-  padding-bottom: 75px;
-}
-
-.header-effect {
-  display: inline-block;
-  position: relative;
+  cursor: default;
+  padding-bottom: 1rem;
 }
 
 .header-effect-text {
   animation: background-pan 3s linear infinite;
-  background: linear-gradient(
-    to right,
-    rgb(212,206,70),
-    rgb(74,186,145),
-    rgb(235,229,160),
-    rgb(212,206,70)
-  );
+  background: linear-gradient(to right,
+      rgb(212, 206, 70),
+      rgb(74, 186, 145),
+      rgb(235, 229, 160),
+      rgb(212, 206, 70));
   background-size: 200%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   white-space: nowrap;
 }
-
-
 
 .maze {
   margin: 15px 0 15px 0;
@@ -59,8 +49,6 @@ body {
 
 .maze .cell {
   float: left;
-  width: 10px;
-  height: 10px;
 }
 
 .maze .cell.closed {
