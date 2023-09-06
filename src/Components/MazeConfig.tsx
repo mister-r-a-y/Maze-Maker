@@ -8,6 +8,7 @@ export default function MazeConfig() {
   const [height, setHeight] = useState('10')
   // allows consistent reload with the setState functions
   const [seed, setSeed] = useState(0)
+  console.log('seed error patch', seed)
 
 
   function handleWidth(e: ChangeEvent<HTMLInputElement>) {
