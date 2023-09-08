@@ -18,10 +18,10 @@ export default function SmallWithNavigation() {
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}>
         <Stack direction={'row'} spacing={6}>
-          <Box as="a" _hover={{color: 'green'}} href={'#'}>
-            About
+          <Box as="a" _hover={{color: 'green'}} href={'https://github.com/mister-r-a-y/maze-maker'}>
+            Repo
           </Box>
-          <Box as="a" _hover={{color: 'green'}} href={'#'}>
+          <Box as="a" _hover={{color: 'green'}} href={'mailto: mblack0619@gmail.com'}>
             Contact
           </Box>
         </Stack>
