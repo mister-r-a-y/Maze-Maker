@@ -1,7 +1,17 @@
 import { ChangeEvent, useState } from 'react'
 import MazeControl from './MazeControl'
 
-import '../styles/Controls.css'
+import {
+  Box,
+  Container,
+  Input,
+  InputGroup,
+  InputLeftAddon,
+  Stack,
+}
+  from '@chakra-ui/react'
+
+import '../styles/Button.css'
 
 export default function MazeConfig() {
   const [width, setWidth] = useState('30')
@@ -44,27 +54,38 @@ export default function MazeConfig() {
           <div className='header-effect-text'>Create a Maze</div>
         </div>
       </div>
-      <form>
-        <div className='size-inputs'>
-          <label htmlFor="width">Width:</label>
-          <input
-            type="text"
-            placeholder='2-100'
-            id="width"
-            value={width}
-            onChange={handleWidth}
-          />
-          <label htmlFor="height">Height:</label>
-          <input
-            type="text"
-            placeholder="2-100"
-            id="height"
-            value={height}
-            onChange={handleHeight}
-          />
-        </div>
-      </form>
-      {/* make sure zeros don't break the maze render and call <MazeControl /> */}
+
+      <Box>
+        <Container
+          as={Stack}
+          maxW={'6x1'}
+          py={4}
+          direction={{ base: 'column', sm: 'column', md: 'row' }}
+          spacing={4}
+          justify={{ base: 'center', md: 'center' }}
+          align={{ base: 'center', md: 'center' }}>
+          <Stack direction={'row'} spacing={6}>
+            <InputGroup>
+              <InputLeftAddon children='Width:' />
+              <Input
+                value={width}
+                onChange={handleWidth}
+                placeholder='Enter value between 2-80'
+                focusBorderColor='none'
+              />
+            </InputGroup>
+            <InputGroup>
+              <InputLeftAddon children='Height:' />
+              <Input
+                value={height}
+                onChange={handleHeight}
+                placeholder='Enter value between 2-80'
+                focusBorderColor='none'
+              />
+            </InputGroup>
+          </Stack>
+        </Container>
+      </Box>
       {controlView}
       <div className="button-container">
         <input
