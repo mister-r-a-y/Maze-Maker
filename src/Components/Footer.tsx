@@ -6,14 +6,14 @@ import {
 } 
   from '@chakra-ui/react'
 
-export default function SmallWithNavigation() {
+export default function Footer() {
   return (
     <Box>
       <Container
         as={Stack}
         maxW={'6x1'}
         py={4}
-        direction={{ base: 'column', md: 'row' }}
+        direction={{ base: 'column', md: 'row'}}
         spacing={4}
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}>
