@@ -8,10 +8,9 @@ import {
   InputGroup,
   InputLeftAddon,
   Stack,
+  Button
 }
   from '@chakra-ui/react'
-
-import '../styles/Button.css'
 
 export default function MazeConfig() {
   const [width, setWidth] = useState('30')
@@ -59,7 +58,7 @@ export default function MazeConfig() {
         <Container
           as={Stack}
           maxW={'6x1'}
-          py={4}
+          py={2}
           direction={{ base: 'column', sm: 'column', md: 'row' }}
           spacing={4}
           justify={{ base: 'center', md: 'center' }}
@@ -87,14 +86,29 @@ export default function MazeConfig() {
         </Container>
       </Box>
       {controlView}
-      <div className="button-container">
-        <input
-          className="button button-outline"
-          type="button"
-          value="Redraw"
-          onClick={handleRedraw} />
-      </div>
+      <Box>
+        <Container
+          as={Stack}
+          py={4}
+          px={8}
+          direction='row'
+          spacing={4}
+          justify={{ base: 'center', md: 'center' }}
+          align={{ base: 'center', md: 'center' }}>
+          <Button
+            bg={'yellow'}
+            color={'white'}
+            _hover={{
+              bg: 'yellow',
+              borderColor: 'green',
+              borderWidth: '1.5px'
+            }}
+            onClick={handleRedraw}
+          >
+            Redraw
+          </Button>
+        </Container>
+      </Box>
     </div>
   )
-
 }
