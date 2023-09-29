@@ -5,12 +5,12 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 
-const colorPalette = {
-  green: '#4ABA91',
-  yellow: '#D4CE46'
-}
-
-const theme = extendTheme({colorPalette})
+const theme = extendTheme({
+  colors: {
+    green: '#4ABA91',
+    yellow: '#D4CE46',
+  },
+})
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <ChakraProvider theme={theme}>
