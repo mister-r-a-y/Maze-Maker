@@ -2,9 +2,12 @@ import {
   Box, 
   Container, 
   Stack, 
-  Text
+  Text,
+  Image
 } 
   from '@chakra-ui/react'
+
+
 
 export default function Footer() {
   return (
@@ -17,9 +20,13 @@ export default function Footer() {
         spacing={4}
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}>
-        <Stack direction={'row'} spacing={6}>
+        <Stack direction={'row'} spacing={6} align='center' justify='center'>
           <Box as="a" _hover={{color: 'green'}} href={'https://github.com/mister-r-a-y/maze-maker'}>
-            Repo
+            <Image
+              boxSize='18px'
+              objectFit='cover'
+              src='/github.svg'
+             />
           </Box>
           <Box as="a" _hover={{color: 'green'}} href={'mailto: mblack0619@gmail.com'}>
             Contact
