@@ -99,9 +99,7 @@ export default function MazeConfig() {
             bg={'yellow'}
             color={'white'}
             _hover={{
-              bg: 'yellow',
-              borderColor: 'green',
-              borderWidth: '1.5px'
+              bg: 'yellow'
             }}
             onClick={handleRedraw}
           >
