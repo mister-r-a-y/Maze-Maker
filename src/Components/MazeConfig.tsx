@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 import MazeControl from './MazeControl'
+import Footer from './Footer'
 
 import {
   Box,
@@ -47,12 +48,13 @@ export default function MazeConfig() {
   )
 
   return (
-    <div className='container'>
+    <>
       <div className='header'>
         <div className='header-effect'>
           <div className='header-effect-text'>Create a Maze</div>
         </div>
       </div>
+
 
       <Box>
         <Container
@@ -107,6 +109,7 @@ export default function MazeConfig() {
           </Button>
         </Container>
       </Box>
-    </div>
+      <Footer />
+      </>
   )
 }
