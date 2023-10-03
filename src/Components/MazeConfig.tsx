@@ -50,12 +50,8 @@ export default function MazeConfig() {
   return (
     <>
       <div className='header'>
-        <div className='header-effect'>
           <div className='header-effect-text'>Create a Maze</div>
-        </div>
       </div>
-
-
       <Box>
         <Container
           as={Stack}
@@ -87,7 +83,10 @@ export default function MazeConfig() {
           </Stack>
         </Container>
       </Box>
+      
+      {/* call maze control */}
       {controlView}
+
       <Box>
         <Container
           as={Stack}
@@ -109,7 +108,8 @@ export default function MazeConfig() {
           </Button>
         </Container>
       </Box>
+
       <Footer />
-      </>
+    </>
   )
 }
