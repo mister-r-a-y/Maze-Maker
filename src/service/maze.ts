@@ -97,7 +97,14 @@ export function initialize(width: number, height: number) {
     gridNumbers.push(1)
     passageRow.push(1)
     // Rooms
+
+    // TRY TO MARK MAZE START
+    // if (grid[1][1]) {
+    //   gridNumbers.push(3)
+    // }
+
     for (let x = 0; x < grid[0].length; x++) {
+
       // Add a cell to room
       gridNumbers.push(2)
 

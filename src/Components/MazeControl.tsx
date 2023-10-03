@@ -16,9 +16,11 @@ export default function MazeControl(props: MazeControlProps) {
   const cellSize = `min(${cellWidth}svw, ${cellHeight}svh)`
   const cellStyles = {width: cellSize, height: cellSize}
 
-    // clear = 0
+  // clear = 0
   // cell closed = 1
   // cell open = 2
+  // cell start = 3
+  // cell end = 4
 
   const gridElements = gridNumbers.map((gridNumber, index) => {
 
@@ -31,6 +33,9 @@ export default function MazeControl(props: MazeControlProps) {
       }
       case 2: {
         return <div className='cell open' key={index} style={cellStyles} />
+      }
+      case 3: {
+        return <div className='cell start' key={index} style={cellStyles} />
       }
       default: {
         throw new Error(`Invalid grid number: ${gridNumber}`)
