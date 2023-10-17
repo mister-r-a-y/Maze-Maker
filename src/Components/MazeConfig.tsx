@@ -90,8 +90,7 @@ export default function MazeConfig() {
       <Box>
         <Container
           as={Stack}
-          pt={4}
-          pb={0}
+          py={4}
           px={8}
           direction='row'
           spacing={4}
