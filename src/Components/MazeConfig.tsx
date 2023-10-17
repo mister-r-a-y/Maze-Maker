@@ -90,12 +90,14 @@ export default function MazeConfig() {
       <Box>
         <Container
           as={Stack}
-          py={4}
+          pt={4}
+          pb={0}
           px={8}
           direction='row'
           spacing={4}
           justify={{ base: 'center', md: 'center' }}
-          align={{ base: 'center', md: 'center' }}>
+          align={{ base: 'center', md: 'center' }}
+          >
           <Button
             bg={'yellow'}
             color={'white'}
@@ -108,7 +110,6 @@ export default function MazeConfig() {
           </Button>
         </Container>
       </Box>
-
       <Footer />
     </>
   )
