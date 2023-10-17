@@ -34,9 +34,12 @@ export default function MazeControl(props: MazeControlProps) {
       case 2: {
         return <div className='cell open' key={index} style={cellStyles} />
       }
-      case 3: {
-        return <div className='cell start' key={index} style={cellStyles} />
-      }
+      // case 3: {
+      //   return <div className='cell start' key={index} style={cellStyles} />
+      // }
+      // case 4: {
+      //   return <div className='cell end' key={index} style={cellStyles} />
+      // }
       default: {
         throw new Error(`Invalid grid number: ${gridNumber}`)
       }

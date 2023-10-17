@@ -34,8 +34,9 @@ function path(grid: number[][], fromX: number, fromY: number, toX: number, toY: 
   carve(grid, toX, toY);
 }
 
+// Carve a path from x,y to an adjacent cell
 function carve(grid: number[][], x: number, y: number) {
-  // Carve a path from x,y to an adjacent cell
+
   if (grid.length === 0) {
     return;
   }
@@ -96,12 +97,8 @@ export function initialize(width: number, height: number) {
     // Left border column
     gridNumbers.push(1)
     passageRow.push(1)
-    // Rooms
 
-    // TRY TO MARK MAZE START
-    // if (grid[1][1]) {
-    //   gridNumbers.push(3)
-    // }
+    // Rooms
 
     for (let x = 0; x < grid[0].length; x++) {
 

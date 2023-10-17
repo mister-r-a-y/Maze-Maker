@@ -3,7 +3,6 @@ body {
   justify-content: center;
   align-items: center;
   background-color: white;
-  height: fit-content;
 }
 
 @keyframes background-pan {
@@ -59,6 +58,10 @@ body {
   background-color: white;
 }
 
-.maze .cell.start {
+/* .maze .cell.start {
   background-color: blue;
 }
+
+.maze.cell.end {
+  background-color: red;
+} */
